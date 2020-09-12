@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 temp fake video_player_web plugin
                        DESC
-  s.homepage         = 'https://github.com/flutter/plugins/tree/master/packages/video_player/video_player_web'
+  s.homepage         = 'https://github.com/shohohoh/plugins/tree/master/packages/video_player/video_player_web'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Flutter Team' => 'flutter-dev@googlegroups.com' }
   s.source           = { :path => '.' }

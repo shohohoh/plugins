@@ -19,6 +19,7 @@ class _ApiLogger implements VideoPlayerApiTest {
   PositionMessage positionMessage;
   LoopingMessage loopingMessage;
   VolumeMessage volumeMessage;
+  SpeedMessage speedMessage;
   MixWithOthersMessage mixWithOthersMessage;
 
   @override
@@ -80,6 +81,12 @@ class _ApiLogger implements VideoPlayerApiTest {
   void setVolume(VolumeMessage arg) {
     log.add('setVolume');
     volumeMessage = arg;
+  }
+
+  @override
+  void setSpeed(SpeedMessage arg) {
+    log.add('setSpeed');
+    speedMessage = arg;
   }
 }
 
@@ -201,6 +208,13 @@ void main() {
       expect(log.log.last, 'setVolume');
       expect(log.volumeMessage.textureId, 1);
       expect(log.volumeMessage.volume, 0.7);
+    });
+
+    test('setSpeed', () async {
+      await player.setSpeed(1, 0.7);
+      expect(log.log.last, 'setSpeed');
+      expect(log.speedMessage.textureId, 1);
+      expect(log.speedMessage.speed, 0.5);
     });
 
     test('seekTo', () async {

@@ -360,15 +360,15 @@ static inline CGFloat radiansToDegrees(CGFloat radians) {
 }
 
 - (void)setSpeed:(double)speed {
-  if (speed == 1.0 || speed == 0.0) {
+  if (speed == 1.0 || speed == 0.5 || speed == 2.0) {
     _player.rate = speed;
   } else if (speed < 0 || speed > 2.0) {
   } else if ((speed > 1.0 && _player.currentItem.canPlayFastForward) ||
              (speed < 1.0 && _player.currentItem.canPlaySlowForward)) {
     _player.rate = speed;
   } else {
-    if (speed > 1.0) {
-      _player.rate = 1.0;
+    if (speed > 2.0) {
+      _player.rate = 2.0;
     } else {
       _player.rate = 1.0;
     }

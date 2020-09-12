@@ -337,6 +337,35 @@ void main() {
       });
     });
 
+    group('setSpeed', () {
+      test('works', () async {
+        final VideoPlayerController controller = VideoPlayerController.network(
+          'https://127.0.0.1',
+        );
+        await controller.initialize();
+        expect(controller.value.speed, 1.0);
+
+        const double speed = 0.5;
+        await controller.setSpeed(speed);
+
+        expect(controller.value.speed, speed);
+      });
+
+      test('clamps values that are too high or low', () async {
+        final VideoPlayerController controller = VideoPlayerController.network(
+          'https://127.0.0.1',
+        );
+        await controller.initialize();
+        expect(controller.value.speed, 1.0);
+
+        await controller.setSpeed(-1);
+        expect(controller.value.speed, 0.0);
+
+        await controller.setSpeed(11);
+        expect(controller.value.speed, 1.0);
+      });
+    });
+
     group('caption', () {
       test('works when seeking', () async {
         final VideoPlayerController controller = VideoPlayerController.network(
@@ -502,6 +531,7 @@ void main() {
       const bool isLooping = true;
       const bool isBuffering = true;
       const double volume = 0.5;
+      const double speed = 0.5;
 
       final VideoPlayerValue value = VideoPlayerValue(
           duration: duration,
@@ -512,10 +542,11 @@ void main() {
           isPlaying: isPlaying,
           isLooping: isLooping,
           isBuffering: isBuffering,
-          volume: volume);
+          volume: volume,
+          speed: speed);
 
       expect(value.toString(),
-          'VideoPlayerValue(duration: 0:00:05.000000, size: Size(400.0, 300.0), position: 0:00:01.000000, caption: Instance of \'Caption\', buffered: [DurationRange(start: 0:00:00.000000, end: 0:00:04.000000)], isPlaying: true, isLooping: true, isBuffering: truevolume: 0.5, errorDescription: null)');
+          'VideoPlayerValue(duration: 0:00:05.000000, size: Size(400.0, 300.0), position: 0:00:01.000000, caption: Instance of \'Caption\', buffered: [DurationRange(start: 0:00:00.000000, end: 0:00:04.000000)], isPlaying: true, isLooping: true, isBuffering: truevolume: 0.5, speed: 0.5, errorDescription: null)');
     });
 
     test('copyWith()', () {
