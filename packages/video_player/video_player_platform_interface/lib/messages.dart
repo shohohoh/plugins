@@ -381,10 +381,10 @@ class VideoPlayerApi {
     }
   }
 
-  Future<void> setSoeed(SoeedMessage arg) async {
+  Future<void> setSpeed(SpeedMessage arg) async {
     final Map<dynamic, dynamic> requestMap = arg._toMap();
     const BasicMessageChannel<dynamic> channel = BasicMessageChannel<dynamic>(
-        'dev.flutter.pigeon.VideoPlayerApi.setSoeed', StandardMessageCodec());
+        'dev.flutter.pigeon.VideoPlayerApi.setSpeed', StandardMessageCodec());
 
     final Map<dynamic, dynamic> replyMap = await channel.send(requestMap);
     if (replyMap == null) {

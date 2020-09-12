@@ -5,7 +5,7 @@ description: Flutter plugin for displaying inline video with other Flutter
 # the version to 2.0.0.
 # See more details: https://github.com/flutter/flutter/wiki/Package-migration-to-1.0.0
 version: 0.10.12+2
-homepage: https://github.com/flutter/plugins/tree/master/packages/video_player/video_player
+homepage: https://github.com/shohohoh/plugins/tree/master/packages/video_player/video_player
 
 flutter:
   plugin:
@@ -38,5 +38,5 @@ dev_dependencies:
   pigeon: 0.1.0-experimental.11
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
-  flutter: ">=1.12.13+hotfix.5 <2.0.0"
+  sdk: '>=2.1.0 <3.0.0'
+  flutter: '>=1.12.13+hotfix.5 <2.0.0'
