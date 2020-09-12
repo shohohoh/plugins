@@ -275,6 +275,21 @@ void FLTVideoPlayerApiSetup(id<FlutterBinaryMessenger> binaryMessenger, id<FLTVi
     }
   }
   {
+    FlutterBasicMessageChannel *channel = [FlutterBasicMessageChannel
+        messageChannelWithName:@"dev.flutter.pigeon.VideoPlayerApi.setSpeed"
+               binaryMessenger:binaryMessenger];
+    if (api) {
+      [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
+        FlutterError *error;
+        FLTSpeedMessage *input = [FLTSpeedMessage fromMap:message];
+        [api setSpeed:input error:&error];
+        callback(wrapResult(nil, error));
+      }];
+    } else {
+      [channel setMessageHandler:nil];
+    }
+  }
+  {
     FlutterBasicMessageChannel *channel =
         [FlutterBasicMessageChannel messageChannelWithName:@"dev.flutter.pigeon.VideoPlayerApi.play"
                                            binaryMessenger:binaryMessenger];
