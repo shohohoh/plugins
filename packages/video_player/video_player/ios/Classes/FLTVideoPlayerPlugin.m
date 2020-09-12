@@ -368,9 +368,9 @@ static inline CGFloat radiansToDegrees(CGFloat radians) {
     _player.rate = speed;
   } else {
     if (speed > 1.0) {
-      _player.rate = 1.0
+      _player.rate = 1.0;
     } else {
-      _player.rate = 1.0
+      _player.rate = 1.0;
     }
   }
 }
@@ -555,9 +555,9 @@ static inline CGFloat radiansToDegrees(CGFloat radians) {
   [player setVolume:[input.volume doubleValue]];
 }
 
-- (void)setspeed:(FLTSpeedMessage*)input error:(FlutterError**)error {
+- (void)setSpeed:(FLTSpeedMessage*)input error:(FlutterError**)error {
   FLTVideoPlayer* player = _players[input.textureId];
-  [player setspeed:[input.speed doubleValue]];
+  [player setSpeed:[input.speed doubleValue]];
 }
 
 - (void)play:(FLTTextureMessage*)input error:(FlutterError**)error {
