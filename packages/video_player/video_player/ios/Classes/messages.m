@@ -36,6 +36,10 @@ static NSDictionary *wrapResult(NSDictionary *result, FlutterError *error) {
 + (FLTVolumeMessage *)fromMap:(NSDictionary *)dict;
 - (NSDictionary *)toMap;
 @end
+@interface FLTSpeedMessage ()
++ (FLTSpeedMessage *)fromMap:(NSDictionary *)dict;
+- (NSDictionary *)toMap;
+@end
 @interface FLTPositionMessage ()
 + (FLTPositionMessage *)fromMap:(NSDictionary *)dict;
 - (NSDictionary *)toMap;
@@ -133,6 +137,27 @@ static NSDictionary *wrapResult(NSDictionary *result, FlutterError *error) {
       dictionaryWithObjectsAndKeys:(self.textureId != nil ? self.textureId : [NSNull null]),
                                    @"textureId", (self.volume != nil ? self.volume : [NSNull null]),
                                    @"volume", nil];
+}
+@end
+
+@implementation FLTSpeedMessage
++ (FLTSpeedMessage *)fromMap:(NSDictionary *)dict {
+  FLTSpeedMessage *result = [[FLTSpeedMessage alloc] init];
+  result.textureId = dict[@"textureId"];
+  if ((NSNull *)result.textureId == [NSNull null]) {
+    result.textureId = nil;
+  }
+  result.speed = dict[@"speed"];
+  if ((NSNull *)result.speed == [NSNull null]) {
+    result.speed = nil;
+  }
+  return result;
+}
+- (NSDictionary *)toMap {
+  return [NSDictionary
+      dictionaryWithObjectsAndKeys:(self.textureId != nil ? self.textureId : [NSNull null]),
+                                   @"textureId", (self.speed != nil ? self.speed : [NSNull null]),
+                                   @"speed", nil];
 }
 @end
 

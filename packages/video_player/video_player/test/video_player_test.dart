@@ -39,6 +39,8 @@ class FakeController extends ValueNotifier<VideoPlayerValue>
   @override
   Future<void> setVolume(double volume) async {}
   @override
+  Future<void> setSpeed(double speed) async {}
+  @override
   Future<void> initialize() async {}
   @override
   Future<void> pause() async {}
@@ -458,6 +460,7 @@ void main() {
       expect(uninitialized.isLooping, isFalse);
       expect(uninitialized.isBuffering, isFalse);
       expect(uninitialized.volume, 1.0);
+      expect(uninitialized.speed, 1.0);
       expect(uninitialized.errorDescription, isNull);
       expect(uninitialized.size, isNull);
       expect(uninitialized.size, isNull);
@@ -478,6 +481,7 @@ void main() {
       expect(error.isLooping, isFalse);
       expect(error.isBuffering, isFalse);
       expect(error.volume, 1.0);
+      expect(error.speed, 1.0);
       expect(error.errorDescription, errorMessage);
       expect(error.size, isNull);
       expect(error.size, isNull);
@@ -655,6 +659,11 @@ class FakeVideoPlayerPlatform extends VideoPlayerApiTest {
   @override
   void setVolume(VolumeMessage arg) {
     calls.add('setVolume');
+  }
+
+  @override
+  void setSpeed(SpeedMessage arg) {
+    calls.add('setSpeed');
   }
 
   @override
